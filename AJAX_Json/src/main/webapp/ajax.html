@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                $.ajax({
+                    url: "ajaxServlet2",
+                    data: {"username": "jack"},
+                    dataType: "text",
+                    type: "post",
+                    async: true,//默认true
+                    success: function (data) {//回调函数,后台执行完毕后,该函数才会执行
+                        $("#msg").html(data);
+                    }
+                })
+                alert(123)
+            })
+        })
+    </script>
+</head>
+<body>
+<button id="btn">点击</button>
+<div id="msg" style="width: 200px;height: 200px;background-color: pink"></div>
+</body>
+</html>

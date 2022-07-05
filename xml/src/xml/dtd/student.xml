@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--本地写法-->
+<!--<!DOCTYPE 根标签名字 SYSTEM "dtd文件的位置">-->
+<!--网络写法-->
+<!--<!DOCTYPE 根标签名字 PUBLIC "dtd文件的名字" "dtd文件的位置URL">-->
+
+<!DOCTYPE students SYSTEM "student.dtd">
+
+<!--<!DOCTYPE students [<!ELEMENT students (student*) >-->
+<!--        <!ELEMENT student (name,age,sex)>-->
+<!--        <!ELEMENT name (#PCDATA)>-->
+<!--        <!ELEMENT age (#PCDATA)>-->
+<!--        <!ELEMENT sex (#PCDATA)>-->
+<!--        <!ATTLIST student number ID #REQUIRED>]>-->
+
+<students>
+    <student number="s001">
+        <name>zhagnsan</name>
+        <age>11</age>
+        <sex>&writer;</sex>
+    </student>
+</students>

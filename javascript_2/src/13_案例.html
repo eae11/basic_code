@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态表格</title>
+
+    <style>
+        table {
+            border: 1px solid;
+            margin: auto;
+            width: 500px;
+        }
+
+        td, th {
+            text-align: center;
+            border: 1px solid;
+        }
+
+        div {
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div>
+    <input type="text" id="id" placeholder="请输入编号">
+    <input type="text" id="name" placeholder="请输入姓名">
+    <input type="text" id="gender" placeholder="请输入性别">
+    <input type="button" value="添加" id="btn_add">
+
+</div>
+
+
+<table id="table">
+    <caption>学生信息表</caption>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>操作</th>
+    </tr>
+
+    <tr>
+        <td>1</td>
+        <td>令狐冲</td>
+        <td>男</td>
+        <td><a href="javascript:void(0);" onclick="delTr(this);">删除</a></td>
+    </tr>
+
+    <tr>
+        <td>2</td>
+        <td>任我行</td>
+        <td>男</td>
+        <td><a href="javascript:void(0);" onclick="delTr(this);">删除</a></td>
+    </tr>
+
+    <tr>
+        <td>3</td>
+        <td>岳不群</td>
+        <td>?</td>
+        <td><a href="javascript:void(0);" onclick="delTr(this);">删除</a></td>
+    </tr>
+
+
+</table>
+
+
+<script>
+
+    /*
+    1.添加：
+        1.给添加按钮绑定单击事件
+        2.获取文本框的内容
+        3.创建td,设置的文本为文本框的内容
+        4.创建tr
+        5.讲td添加到tr当中
+        6.获取table,将tr添加到table中
+    2.删除:
+        1.确定点击的是哪一个超链接
+            <a href="javascript:void(0);" onclick="delTr(this);">删除</a>
+        2.怎么删除?
+            removeChild():通过父节点删除子节点
+     */
+    //1.获取按钮
+    document.getElementById("btn_add").onclick = function () {
+        //2.获取文本框内容
+        // var id = document.getElementById("id").setAttribute("value", "dada");
+        // var id = document.getElementById("id").getAttribute("value");
+        /*
+        dom.getAttribute("value") 与dom.value 差异
+        dom是一个 input type="text"
+        手动修改 input 的值,使用 dom.getAttribute("value")只能得到 html Dom中的值，而不能得到修改后的值（即内存中的值）;
+        可以通过 dom.value 得到修改后的最新值（内存中的值）
+        使用dom.setAttribute("value","2011"),只能通过 dom.getAttribute("value") 得到 2011
+        使用:dom.value = 2012,只能通过 dom.value得到2012
+         */
+        var id = document.getElementById("id").value;
+        var name = document.getElementById("name").value;
+        var gender = document.getElementById("gender").value;
+        //3.创建td,赋值td的标签体
+        //id的td
+        var th_id = document.createElement("td");
+        var text_id = document.createTextNode(id);
+        th_id.append(text_id);
+        //name的td
+        var th_name = document.createElement("td");
+        var text_name = document.createTextNode(name);
+        th_name.append(text_name);
+        //gender的td
+        var th_gender = document.createElement("td");
+        var text_gender = document.createTextNode(gender);
+        th_gender.append(text_gender);
+        //a标签的td
+        var th_a = document.createElement("th");
+        var a = document.createElement("a");
+        // a.href = "javascript:void(0);"
+        a.setAttribute("href", "javascript:void(0);");
+        // a.onclick = function () {
+        //     delTr(this);
+        // }
+        a.setAttribute("onclick", "delTr(this);")
+        var text_a = document.createTextNode("删除");
+        a.appendChild(text_a);
+        th_a.appendChild(a);
+        //4.创建tr
+        var tr = document.createElement("tr");
+        //5.添加td到tr中
+        tr.appendChild(th_id);
+        tr.appendChild(th_name);
+        tr.appendChild(th_gender);
+        tr.appendChild(th_a);
+        //获取table
+        var table = document.getElementsByTagName("table")[0];
+        table.appendChild(tr);
+    }
+
+    function delTr(obj) {
+        var table = obj.parentNode.parentNode.parentNode;
+        var tr = obj.parentNode.parentNode;
+        table.removeChild(tr);
+    }
+
+    //使用innerHTML添加
+    // document.getElementById("btn_add").onclick = function () {
+    //     //2.获取文本框内容
+    //     var id = document.getElementById("id").value;
+    //     var name = document.getElementById("name").value;
+    //     var gender = document.getElementById("gender").value;
+    //     //获取table
+    //     var table = document.getElementsByTagName("table")[0];
+    //     table.innerHTML += "<tr>\n" +
+    //         "        <td>" + id + "</td>\n" +
+    //         "        <td>" + name + "</td>\n" +
+    //         "        <td>" + gender + "</td>\n" +
+    //         "        <td><a href=\"javascript:void(0);\" onclick=\"delTr(this);\">删除</a></td>\n" +
+    //         "    </tr>";
+    //
+    // }
+    //
+    // function delTr(obj) {
+    //     var table = obj.parentNode.parentNode.parentNode;
+    //     var tr = obj.parentNode.parentNode;
+    //     table.removeChild(tr);
+    // }
+</script>
+</body>
+</html>

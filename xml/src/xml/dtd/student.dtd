@@ -1,0 +1,17 @@
+<!ELEMENT students (student*) ><!--students里面能出现student标签0次或多次-->
+<!ELEMENT student (name,age,sex)><!--student标签里面能出现name age sex标签只能出现一次而且要按顺序-->
+<!--#PCDATA(parsed character data)表示已解析的字符数据。-->
+<!ELEMENT name (#PCDATA)><!--标签体里必须是字符串-->
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT sex (#PCDATA)>
+<!--attribute List-->
+<!--https://www.w3school.com.cn/dtd/dtd_attributes.asp-->
+<!--<!ATTLIST 元素名称 属性名称 属性类型 默认值>-->
+<!ATTLIST student number ID #REQUIRED><!--元素student 里面的属性名字 叫number 属性的类型为id表示必须唯一 #REQUIRED必须出现-->
+<!--内部实体-->
+<!--<!ENTITY 实体名称 "实体的值">-->
+        <!ENTITY writer "Bill Gates">
+        <!ENTITY copyright "Copyright W3School.com.cn">
+<!--外部实体-->
+<!--<!ENTITY 实体名称 SYSTEM "URI/URL">-->
+<!--<!ENTITY writer SYSTEM "http://www.w3school.com.cn/dtd/entities.dtd">-->

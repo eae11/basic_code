@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--<!DOCTYPE students SYSTEM "student.dtd">&lt;!&ndash; 外部引用&ndash;&gt;-->
+
+<!--<!DOCTYPE students [<!ELEMENT students (student*) >-->  <!-- 内部引用-->
+<!--        <!ELEMENT student (name,age,sex)>-->
+<!--        <!ELEMENT name (#PCDATA)>-->
+<!--        <!ELEMENT age (#PCDATA)>-->
+<!--        <!ELEMENT sex (#PCDATA)>-->
+<!--        <!ATTLIST student number ID #REQUIRED>]>-->
+
+<students>
+    <student number="张伟是nt">
+        <name id="hhhh">
+            <xing>zhang</xing>
+            <ming>san</ming>
+        </name>
+        <age>11</age>
+        <sex>male</sex>
+    </student>
+    <student number="s002">
+        <name id="llll">lisi</name>
+        <age>13</age>
+        <sex>male</sex>
+    </student>
+</students>

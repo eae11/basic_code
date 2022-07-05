@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+    <script src="../../../IdeaProject2/p1/src/main/resources/static/js/jquery-3.3.1.min.js"></script>
+    <script>
+        //给b1按钮添加单击事件
+        //1.获取b1按钮
+        // window.onload
+        // {
+        //     $("#b1").click(function () {
+        //         alert("abc")
+        //     });
+        // }
+
+        //jquery入口函数(dom文档加载之后执行改函数中的代码)
+        $(function () {
+            $("#b1").click(function () {
+                alert("abc")
+            });
+        })
+
+        // function f1() {
+        //     alert("abc")
+        // }
+        //
+        // function f2() {
+        //     alert("bcd")
+        // }
+        //
+        // window.onload = f1;
+        // window.onload = f2;
+        $(function () {
+            alert("abc")
+        })
+        $(function () {
+            alert("bcd")
+        })
+        $(function () {
+            $("#div1").css("backgroundColor", "pink");
+        })
+
+        /*
+            window.onload和$(function)区别
+                window.onload只能定义一次,如果定义多次,后边的会将前边的覆盖掉
+                $(function)可以定义多次
+        */
+    </script>
+</head>
+<body>
+<div id="div1">div1...</div>
+<div id="div2">div2...</div>
+<input type="button" value="点我" id="b1">
+</body>
+</html>
